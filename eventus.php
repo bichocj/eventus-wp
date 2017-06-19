@@ -61,8 +61,17 @@ function emesh_custom_menu() {
 add_action( 'admin_menu', 'emesh_custom_menu');
 
 
-/* Adición de script emesh */
+/* Adición de jquery */
+function load_jquery() {
+    if ( ! wp_script_is( 'jquery', 'enqueued' )) {
+		wp_deregister_script('jquery'); 
+		wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js', false, '1.9.0');
+        //Enqueue
+        wp_enqueue_script( 'jquery' );
 
+    }
+}
+add_action( 'wp_enqueue_scripts', 'load_jquery' );
 
 
 /* Adición de script emesh */
